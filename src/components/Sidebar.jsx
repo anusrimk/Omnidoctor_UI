@@ -279,7 +279,7 @@ export default function Sidebar({ selected, setSelected }) {
                 ? "bg-teal-50 border-2 border-teal-200 text-gray-700"
                 : "hover:bg-teal-100 text-gray-700"
             }`}
-            onClick={() => setSelected("Global Variables")}
+            onClick={() => setSelected("GlobalVariables")}
           >
             <Settings size={18} className="text-gray-400" />
             <span>Global Variables</span>

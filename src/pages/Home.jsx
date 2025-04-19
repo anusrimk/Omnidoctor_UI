@@ -25,6 +25,7 @@ const PatientDevotion = React.lazy(() => import("./PatientDevotion"));
 const Chatting = React.lazy(() => import("./Chatting"));
 const CRMUsers = React.lazy(() => import("./CRMUsers"));
 const GlovoClients = React.lazy(() => import("./GlovoClient"));
+const GlobalVariables = React.lazy(() => import("./GlobalVariables"));
 
 const Home = () => {
   const [selected, setSelected] = useState("Clinics");
@@ -75,6 +76,8 @@ const Home = () => {
       case "GlovoClients":
       case "GlovoOrders":
         return <GlovoClients />;
+      case "GlobalVariables":
+        return <GlobalVariables />;
 
       default:
         return (
