@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from "react";
 import Topbar from "../components/Topbar";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar"
 // Lazy load all page components
 const Clinics = React.lazy(() => import("./Clinics"));
 const Doctors = React.lazy(() => import("./Doctors"));
