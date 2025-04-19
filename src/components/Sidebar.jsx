@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
 import {
   Users,
   ShoppingCart,
   Settings,
   Briefcase,
-  LogOut,
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
@@ -36,10 +35,10 @@ const refundsItems = [
 ];
 
 const backofficeItems = [
-  { label: "Users", path: "/backoffice/users" },
-  { label: "Roles", path: "/backoffice/roles" },
-  { label: "Permissions", path: "/backoffice/permissions" },
+  { label: "CRMUsers"},
+  { label: "CRMRoles"},
 ];
+
 
 export default function Sidebar({ selected, setSelected }) {
   const [openMenus, setOpenMenus] = useState({
@@ -49,7 +48,6 @@ export default function Sidebar({ selected, setSelected }) {
     refunds: false,
     backoffice: false,
   });
-  // const navigate = useNavigate();
 
   const toggleMenu = (menu) => {
     setOpenMenus((prev) => ({ ...prev, [menu]: !prev[menu] }));
@@ -95,10 +93,17 @@ export default function Sidebar({ selected, setSelected }) {
         ))}
       </div>
     );
-  // const [isConfigOpen, setIsConfigOpen] = useState(false);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Manually scroll to the last menu item if it's not visible
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) {
+      sidebar.scrollTop = sidebar.scrollHeight;
+    }
+  }, [openMenus.backoffice]);
+
   return (
-    <aside className="fixed left-0 top-18 bottom-0 w-64 bg-white text-gray-700 overflow-hidden shadow-md">
+    <aside className="fixed left-0 top-18 bottom-0 w-64 bg-white text-gray-700 overflow-hidden shadow-md sidebar">
       <div className="mb-8 p-4 ">
         <h1 className="text-xl font-bold text-gray-700">Hospital Admin</h1>
       </div>
@@ -246,7 +251,7 @@ export default function Sidebar({ selected, setSelected }) {
                 ? "bg-teal-50 border-2 border-teal-200 text-gray-700"
                 : "hover:bg-teal-100 text-gray-700"
             }`}
-            onClick={() => setSelected("Clients")}
+            onClick={() => setSelected("GlovoClients")}
           >
             <Users size={18} className="text-gray-400" />
             <span>Clients</span>
@@ -257,7 +262,7 @@ export default function Sidebar({ selected, setSelected }) {
                 ? "bg-teal-50 border-2 border-teal-200 text-gray-700"
                 : "hover:bg-teal-100 text-gray-700"
             }`}
-            onClick={() => setSelected("Orders")}
+            onClick={() => setSelected("GlovoOrders")}
           >
             <ShoppingCart size={18} className="text-gray-400" />
             <span>Orders</span>
@@ -298,16 +303,6 @@ export default function Sidebar({ selected, setSelected }) {
             </button>
             {renderSubmenu(backofficeItems, openMenus.backoffice)}
           </div>
-          <button
-            className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-md text-gray-400 hover:bg-red-500 hover:text-white transition-colors"
-            onClick={() => {
-              localStorage.removeItem("isLoggedIn");
-              navigate("/login");
-            }}
-          >
-            <LogOut size={18} />
-            <span>Logout</span>
-          </button>
         </nav>
       </div>
     </aside>

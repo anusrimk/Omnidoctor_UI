@@ -3,15 +3,18 @@ import Button from "../components/Button";
 import { MessageSquare, MessagesSquare } from "lucide-react";
 
 const ChatConfiguration = () => {
-  // Add state for toggles
   const [welcomeActive, setWelcomeActive] = useState(true);
   const [firstAnswerActive, setFirstAnswerActive] = useState(true);
   const [welcomeMessage, setWelcomeMessage] = useState(
-    "Bienvenido al Chat de Omnidoctor. Gracias por contactar con nosotros! Actualmente nuestro servicio de Videoconsultas Medicas es GRATIS y puedes acceder a uno de nuestros especialistas sin NINGÚN coste!"
+    "Namaste! How can we help you at Arogya Hospital today?"
   );
   const [firstAnswer, setFirstAnswer] = useState(
-    "Estamos experimentando un tráfico inusual en el CHAT debido al COVID-19. Para atender tu solicitud sin espera te invitamos a hacer click en el botón de 'Videoconsulta YA' y conectar de forma GRATUITA con uno de nuestros 300 Médicos Especialistas que podrán ayudarte de inmediato con tu consulta"
+    "Dhanyavaad! Our team will assist you shortly."
   );
+
+  // New state to handle editing toggles
+  const [isEditingWelcome, setIsEditingWelcome] = useState(false);
+  const [isEditingFirstAnswer, setIsEditingFirstAnswer] = useState(false);
 
   return (
     <div className="w-full h-fit flex flex-col gap-8 bg-gray-100 p-8">
@@ -20,7 +23,7 @@ const ChatConfiguration = () => {
       </div>
 
       <div className="flex gap-8">
-        {/* Statistics Cards */}
+        {/* Toggle Cards */}
         <div className="w-80 flex flex-col gap-4">
           <div className="bg-white rounded-md shadow-sm p-6">
             <div className="flex items-center gap-4">
@@ -75,6 +78,7 @@ const ChatConfiguration = () => {
           </div>
         </div>
 
+        {/* Message Editing Section */}
         <div className="flex-1 bg-white rounded-md shadow-sm p-6">
           <div className="flex flex-col gap-8">
             {/* Welcome Message */}
@@ -85,13 +89,22 @@ const ChatConfiguration = () => {
               <div className="flex items-center gap-4">
                 <textarea
                   value={welcomeMessage}
+                  readOnly={!isEditingWelcome}
                   onChange={(e) => setWelcomeMessage(e.target.value)}
-                  className="bg-white w-full h-32 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 shadow-sm border border-gray-200 resize-none"
+                  className={`bg-white w-full h-32 px-3 py-2 rounded-md shadow-sm border ${
+                    isEditingWelcome
+                      ? "border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                      : "border-gray-200"
+                  } resize-none`}
                 />
               </div>
               <div className="flex justify-end mt-2">
-                <Button color="teal" variant="primary">
-                  Update
+                <Button
+                  color="teal"
+                  variant="primary"
+                  onClick={() => setIsEditingWelcome(!isEditingWelcome)}
+                >
+                  {isEditingWelcome ? "Save" : "Update"}
                 </Button>
               </div>
             </div>
@@ -102,13 +115,22 @@ const ChatConfiguration = () => {
               <div className="flex items-center gap-4">
                 <textarea
                   value={firstAnswer}
+                  readOnly={!isEditingFirstAnswer}
                   onChange={(e) => setFirstAnswer(e.target.value)}
-                  className="bg-white w-full h-32 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 shadow-sm border border-gray-200 resize-none"
+                  className={`bg-white w-full h-32 px-3 py-2 rounded-md shadow-sm border ${
+                    isEditingFirstAnswer
+                      ? "border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                      : "border-gray-200"
+                  } resize-none`}
                 />
               </div>
               <div className="flex justify-end mt-2">
-                <Button color="teal" variant="primary">
-                  Update
+                <Button
+                  color="teal"
+                  variant="primary"
+                  onClick={() => setIsEditingFirstAnswer(!isEditingFirstAnswer)}
+                >
+                  {isEditingFirstAnswer ? "Save" : "Update"}
                 </Button>
               </div>
             </div>

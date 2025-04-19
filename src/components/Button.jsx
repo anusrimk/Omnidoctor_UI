@@ -1,12 +1,12 @@
 import React from "react";
 
-const Button = ({ 
-  children, 
-  variant = "primary", 
-  color = "teal", 
-  className = "", 
+const Button = ({
+  children,
+  variant = "primary",
+  color = "teal",
+  className = "",
   icon: Icon,
-  ...props 
+  ...props
 }) => {
   const styles = {
     primary: {
@@ -14,15 +14,17 @@ const Button = ({
       teal: "bg-teal-500 hover:bg-teal-600",
       violet: "bg-violet-500/80 hover:bg-violet-500",
       yellow: "bg-yellow-400/70 hover:bg-yellow-400",
-      red: "bg-red-500 hover:bg-red-600"
+      red: "bg-red-500 hover:bg-red-600",
+      gray: "bg-gray-300 hover:bg-gray-400 text-gray-800", // New gray variant
     },
     icon: {
       base: "p-2 rounded-md",
       teal: "text-teal-500 hover:bg-teal-50",
       violet: "text-violet-500 hover:bg-violet-50",
       yellow: "text-yellow-400 hover:bg-yellow-50",
-      red: "text-red-500 hover:bg-red-50"
-    }
+      red: "text-red-500 hover:bg-red-50",
+      gray: "text-gray-600 hover:bg-gray-200",
+    },
   };
 
   const baseStyles = styles[variant]?.base || styles.primary.base;

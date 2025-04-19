@@ -23,6 +23,8 @@ const InsuranceMapper = React.lazy(() => import("./InsuranceMapper"));
 const PatientBalance = React.lazy(() => import("./PatientBalance"));
 const PatientDevotion = React.lazy(() => import("./PatientDevotion"));
 const Chatting = React.lazy(() => import("./Chatting"));
+const CRMUsers = React.lazy(() => import("./CRMUsers"));
+const GlovoClients = React.lazy(() => import("./GlovoClient"));
 
 const Home = () => {
   const [selected, setSelected] = useState("Clinics");
@@ -67,6 +69,13 @@ const Home = () => {
         return <PatientDevotion />;
       case "Chatting":
         return <Chatting />;
+      case "CRMUsers":
+      case "CRMRoles":
+        return <CRMUsers />;
+      case "GlovoClients":
+      case "GlovoOrders":
+        return <GlovoClients />;
+
       default:
         return (
           <div className="p-6">
