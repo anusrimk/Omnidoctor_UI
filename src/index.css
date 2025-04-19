@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@theme {
+  --color-white: #fffffe;
+  --color-gray-100: rgb(249, 251, 252);
+}
+
+@layer utilities {
+  /* general */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 text-white rounded-md transition-colors duration-200;
+  }
+
+  .btn-icon {
+    @apply p-1 rounded transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply p-2 border border-gray-300 rounded-md;
+  }
+
+  /* clinics */
+
+  .clinics_container {
+    @apply w-[50%] h-full flex flex-col gap-4;
+  }
+
+  .clinics_large {
+    @apply w-full h-[50%] bg-white shadow-sm border-1 border-gray-100 rounded-lg py-4 px-6 flex justify-between items-center;
+  }
+
+  .clinics_mini {
+    @apply w-[50%] h-full bg-white shadow-sm border-1 border-gray-100 rounded-lg py-4 px-6 flex justify-between items-center;
+  }
+
+  .clinics_icon {
+    @apply rounded-full border-2 w-20 h-20 flex justify-center items-center;
+  }
+
+  .clinics_content {
+    @apply flex flex-col text-right;
+  }
+
+  /* doctors */
+  .table-cell {
+    @apply p-4 text-sm;
+  }
+
+  .table-header {
+    @apply text-left p-4 text-sm font-medium;
+  }
+
+  .checkbox-primary {
+    @apply h-5 w-5 rounded border-gray-300 text-teal-600 focus:ring-teal-500;
+  }
+
+  /* sidebar */
+  .sidebar-button {
+    @apply w-full text-left flex items-center gap-2 px-3 py-2 rounded-md transition-colors;
+  }
+
+  .sidebar-button-default {
+    @apply hover:bg-teal-100 text-gray-700;
+  }
+
+  .sidebar-button-selected {
+    @apply bg-teal-50 border-2 border-teal-200 text-gray-700;
+  }
+
+  .sidebar-button-logout {
+    @apply text-gray-400 hover:bg-red-500 hover:text-white;
+  }
+
+  .sidebar-icon {
+    @apply text-gray-400;
+  }
+
+  .sidebar-link {
+    @apply w-full text-left flex items-center gap-2 px-3 py-2 rounded-md transition-colors;
+  }
+
+  .sidebar-link-active {
+    @apply bg-teal-50 border-2 border-teal-200 text-gray-700;
+  }
+
+  .sidebar-link-default {
+    @apply hover:bg-teal-100 text-gray-700;
+  }
+
+  .sidebar-submenu {
+    @apply ml-6 mt-1 space-y-1 py-1;
+  }
+
+  .sidebar-submenu-item {
+    @apply text-sm py-1.5;
+  }
+
+  /* table utilities */
+  .table-container {
+    @apply w-full h-fit flex flex-col gap-8 bg-gray-100 p-8;
+  }
+
+  .table-title {
+    @apply font-semibold text-xl;
+  }
+
+  .table-wrapper {
+    @apply bg-white rounded-md shadow-sm p-6;
+  }
+
+  .table-scroll {
+    @apply overflow-x-auto;
+  }
+
+  .table-base {
+    @apply w-full;
+  }
+
+  .table-header-row {
+    @apply bg-gray-100;
+  }
+
+  .table-header-cell {
+    @apply text-left p-4 text-sm font-medium text-gray-600;
+  }
+
+  .table-row {
+    @apply border-t border-gray-200 hover:bg-gray-50;
+  }
+
+  .table-cell {
+    @apply p-4 text-sm text-gray-600;
+  }
+
+  .table-action-cell {
+    @apply p-4;
+  }
+
+  .table-action-wrapper {
+    @apply flex gap-2;
+  }
+
+  /* filter utilities */
+  .filter-container {
+    @apply flex gap-4 items-end;
+  }
+
+  .filter-group {
+    @apply flex flex-col gap-1;
+  }
+
+  .filter-label {
+    @apply text-sm text-gray-600;
+  }
+
+  .filter-input {
+    @apply bg-white w-48 h-10 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400 shadow-sm border border-gray-200;
+  }
+}
+
+/* custom loader */
+.loader {
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(
+    from 120deg at 50% 64%,
+    #0000,
+    #25b09b 1deg 120deg,
+    #0000 121deg
+  );
+  animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s: -1;
+}
+@keyframes l27-0 {
+  0%,
+  30% {
+    transform: rotate(0);
+  }
+  70% {
+    transform: rotate(120deg);
+  }
+  70.01%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes l27-1 {
+  0% {
+    transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
+  }
+  30%,
+  70% {
+    transform: rotate(calc(var(--s, 1) * 120deg))
+      translate(calc(var(--s, 1) * -5px), 10px);
+  }
+  100% {
+    transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
+  }
+}
