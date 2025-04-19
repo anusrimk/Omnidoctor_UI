@@ -3,7 +3,7 @@ import Button from "../components/Button";
 
 const PatientDevotion = () => {
   const [selectedDoctor, setSelectedDoctor] = useState("");
-  const [totalBalance, setTotalBalance] = useState("0€");
+  const [totalBalance, setTotalBalance] = useState("0$");
   const [todayQuotes, setTodayQuotes] = useState("");
 
   return (
